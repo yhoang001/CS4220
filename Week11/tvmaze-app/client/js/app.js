@@ -1,5 +1,10 @@
 angular
-  .module('app', ['ngRoute', 'ngResource', 'SearchCtrl', 'SearchSrvc'])
+  .module('app', ['ngRoute', 'ngResource', 'TVMazeCtrl', 'TVMazeSrvc'])
+  .filter('trustHTML', function ($sce) {
+      return (text) => {
+        return $sce.trustAsHtml(text)
+      }
+  })
   .config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('')
   }])
@@ -8,7 +13,7 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/search.html',
-        controller: 'SearchController'
+        controller: 'TVMazeController'
       })
       .otherwise({
         redirectTo: '/'
